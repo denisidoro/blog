@@ -1,0 +1,19 @@
+{% macro post_preview(post) %}
+<div class="post-preview">
+  <h3 class="post-title"><a href="{{ post.permalink }}">{{ post.title }}</a></h3>
+  <small>
+    {{ post.date | date(format="%B %d, %Y") }} - {{ post.word_count }} words - {{ post.reading_time }} mins -
+    {% for tag in post.taxonomies.tags %}
+    <a class="post-preview-tag" href="{{ get_taxonomy_url(kind="tags", name=tag) }}">{{tag}}</a>
+    {% endfor %}
+  </small>
+  <div class="summary">
+    {% if post.extra.summary -%}
+    {{ post.extra.summary }}
+    {% else %}
+    {{ post.content | safe | striptags | truncate(length=300) }}
+    {%- endif %}
+    <a href="{{ post.permalink }}">read more</a>
+  </div>
+</div>
+{% endmacro input %}

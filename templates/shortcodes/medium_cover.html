@@ -1,0 +1,18 @@
+<figure>
+
+    <img alt="Image for post" class="t u v gh aj" src="https://miro.medium.com/max/11014/{{id}}" srcSet=" https://miro.medium.com/max/552/{{id}} 276w, https://miro.medium.com/max/1104/{{id}} 552w,
+    https://miro.medium.com/max/1280/{{id}} 640w, https://miro.medium.com/max/1400/{{id}} 700w" sizes="700px" />
+
+    {% if caption %}
+    <figcaption>{{caption}} {% if unsplash %}by
+        <a href="https://unsplash.com/@{{unsplash}}?utm_source=medium&utm_medium=referral">{{unsplash}}</a>
+        on <a href="https://unsplash.com?utm_source=medium&utm_medium=referral">Unsplash</a> {% endif %}</figcaption>
+    {% endif %}
+
+    {% if body %}
+    <figcaption>{{body}} {% if unsplash %}by
+        <a href="https://unsplash.com/@{{unsplash}}?utm_source=medium&utm_medium=referral">{{unsplash}}</a>
+        on <a href="https://unsplash.com?utm_source=medium&utm_medium=referral">Unsplash</a> {% endif %}</figcaption>
+    {% endif %}
+
+</figure>

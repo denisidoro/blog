@@ -1,0 +1,16 @@
+<figure>
+
+    <img alt="Image for post" class="medium-image"
+        src="https://miro.medium.com/max/2160/{{id}}.{% if ext %}{{ ext }}{% else %}png{% endif %}"
+        srcSet="https://miro.medium.com/max/552/{{id}}.{% if ext %}{{ ext }}{% else %}png{% endif %} 276w, https://miro.medium.com/max/1104/{{id}}.{% if ext %}{{ ext }}{% else %}png{% endif %} 552w, https://miro.medium.com/max/1280/{{id}}.{% if ext %}{{ ext }}{% else %}png{% endif %} 640w, https://miro.medium.com/max/1400/{{id}}.{% if ext %}{{ ext }}{% else %}png{% endif %} 700w"
+        sizes="700px" />
+
+    {% if caption %}
+    <figcaption>{{caption | markdown(inline=true) | safe}}</figcaption>
+    {% endif %}
+
+    {% if body %}
+    <figcaption>{{body | markdown(inline=true) | safe}}</figcaption>
+    {% endif %}
+
+</figure>
