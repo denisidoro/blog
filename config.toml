@@ -1,0 +1,49 @@
+# The URL the site will be built for
+base_url = "https://simple-dev-blog-zola-starter.netlify.app/"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+highlight_theme = "demain"
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+title = "Denis's blog"
+description = "About, opinions and rants"
+
+generate_feed = true
+
+taxonomies = [
+  { name = "tags" }
+]
+
+[extra]
+
+nav = [
+  # { name = "About", path = "/" },
+  { name = "Tags", path = "/tags/" },
+  { name = "Blog", path = "/blog/" }
+]
+
+latest_text = "Check out my latest post:"
+
+icon = "profile_square.jpg"
+profile_small = "profile_square.jpg"
+profile_large = "profile_vertical.jpg"
+
+accent = "#05a081"
+accent_light = "#82d0c0"
+
+author = "Denis Isidoro"
+
+footer_about = """
+_Note: opinions expressed here are solely my own and do not necessarily express the views or experiences of my employer or past employers._
+"""
+
+not_found_message = """
+This is not the page you're looking for... return back to [safety?](/)
+"""
