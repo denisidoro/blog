@@ -13,7 +13,7 @@ highlight_theme = "demain"
 build_search_index = false
 
 title = "Denis's blog"
-description = "About, opinions and rants"
+description = "About me and blog posts"
 
 generate_feed = true
 
