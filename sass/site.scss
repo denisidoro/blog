@@ -83,3 +83,11 @@ $breakpoint-mobile: 768px;
   width: 2em;
   display: inline-block;
 }
+
+body {
+  display: none;
+}
+
+.fontawesome-i2svg-active body {
+  display: initial;
+}
