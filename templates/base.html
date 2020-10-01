@@ -1,112 +1,157 @@
+{% import 'macros.html' as macros %}
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
+<html>
 
-    <style>
-      :root {
-        --accent-color: {{ config.extra.accent }};
-        --accent-color-light: {{ config.extra.accent_light }};
-      }
-    </style>
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="#ffffff" name="theme-color" />
+  <meta content="#da532c" name="msapplication-TileColor" />
 
-    <meta name="theme-color" content="{{ config.extra.accent }}" />
+  {% if config.extra.profile_small %}
+    <link rel="icon" href="{{ resize_image(path=config.extra.profile_small, width=48, height=48, op="fill") }}" />
+    <link rel="apple-touch-icon" sizes="48x48"
+      href="{{ resize_image(path=config.extra.profile_small, width=48, height=48, op="fill") }}" />
+    <link rel="apple-touch-icon" sizes="72x72"
+      href="{{ resize_image(path=config.extra.profile_small, width=72, height=72, op="fill") }}" />
+    <link rel="apple-touch-icon" sizes="96x96"
+      href="{{ resize_image(path=config.extra.profile_small, width=96, height=96, op="fill") }}" />
+    <link rel="apple-touch-icon" sizes="144x144"
+      href="{{ resize_image(path=config.extra.profile_small, width=144, height=144, op="fill") }}" />
+    <link rel="apple-touch-icon" sizes="192x192"
+      href="{{ resize_image(path=config.extra.profile_small, width=192, height=192, op="fill") }}" />
+    <link rel="apple-touch-icon" sizes="256x256"
+      href="{{ resize_image(path=config.extra.profile_small, width=256, height=256, op="fill") }}" />
+    <link rel="apple-touch-icon" sizes="384x384"
+      href="{{ resize_image(path=config.extra.profile_small, width=384, height=384, op="fill") }}" />
+    <link rel="apple-touch-icon" sizes="512x512"
+      href="{{ resize_image(path=config.extra.profile_small, width=512, height=512, op="fill") }}" />
+  {% endif %}
 
-    {% if config.extra.profile_small %}
-      <link rel="icon" href="{{ resize_image(path=config.extra.profile_small, width=48, height=48, op="fill") }}" />
-      <link rel="apple-touch-icon" sizes="48x48" href="{{ resize_image(path=config.extra.profile_small, width=48, height=48, op="fill") }}" />
-      <link rel="apple-touch-icon" sizes="72x72" href="{{ resize_image(path=config.extra.profile_small, width=72, height=72, op="fill") }}" />
-      <link rel="apple-touch-icon" sizes="96x96" href="{{ resize_image(path=config.extra.profile_small, width=96, height=96, op="fill") }}" />
-      <link rel="apple-touch-icon" sizes="144x144" href="{{ resize_image(path=config.extra.profile_small, width=144, height=144, op="fill") }}" />
-      <link rel="apple-touch-icon" sizes="192x192" href="{{ resize_image(path=config.extra.profile_small, width=192, height=192, op="fill") }}" />
-      <link rel="apple-touch-icon" sizes="256x256" href="{{ resize_image(path=config.extra.profile_small, width=256, height=256, op="fill") }}" />
-      <link rel="apple-touch-icon" sizes="384x384" href="{{ resize_image(path=config.extra.profile_small, width=384, height=384, op="fill") }}" />
-      <link rel="apple-touch-icon" sizes="512x512" href="{{ resize_image(path=config.extra.profile_small, width=512, height=512, op="fill") }}" />
-    {% endif %}
+  {% if config.extra.favicon.webmanifest %}
+  <link href='{{ config.extra.favicon.webmanifest }}' rel="manifest" />
+  {% endif %}
+  {% if config.extra.favicon.safari_pinned_tab %}
+  <link color="#5bbad5" href='{{ config.extra.favicon.safari_pinned_tab }}' rel="mask-icon" />
+  {% endif %}
+  {% if config.extra.favicon.favicon_16x16 %}
+  <link href='{{ config.extra.favicon.favicon_16x16 }}' rel="icon" sizes="16x16" type="image/png" />
+  {% endif %}
+  {% if config.extra.favicon.favicon_32x32 %}
+  <link href='{{ config.extra.favicon.favicon_32x32 }}' rel="icon" sizes="32x32" type="image/png" />
+  {% endif %}
+  {% if config.extra.favicon.apple_touch_icon %}
+  <link href='{{ config.extra.favicon.apple_touch_icon }}' rel="apple-touch-icon" sizes="180x180" />
+  {% endif %}
+  <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" rel="stylesheet" />
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.css"
+    rel="stylesheet" /> -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+  <link href='{{ get_url(path='site.css') }}' rel="stylesheet" /> {% block custom_css %}{% endblock %}
+  <title>
+    {% block title %}
+    {{ config.title }}
+    {% endblock title %}
+  </title>
+  <script crossorigin="anonymous" src="https://kit.fontawesome.com/201b8d5e05.js"></script>
+  {% if config.extra.analytics.google %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.analytics.google }}"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "{{ config.extra.analytics.google }}");
+  </script>
+  {% endif %}
+</head>
 
-    {% if config.extra.gtag %}
-      <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.gtag }}"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{ config.extra.gtag }}');
-      </script>
-    {% endif %}
-
-    <meta property="og:type" content="website">
-
-    <meta name="twitter:card" content="summary">
-
-    {% if config.twitter %}
-      <meta name="twitter:creator" content="@{{ config.twitter }}">
-      <meta name="twitter:site" content="@{{ config.twitter }}">
-    {% endif %}
-
-    {% if page.extra.thumbnail %}
-    <meta property="og:image" content="{{ get_url(path=page.path ~ page.extra.thumbnail) }}">
-    {% elif config.extra.default_og_image %}
-    <meta property="og:image" content="{{ get_url(path=config.extra.default_og_image) }}">
-    {% endif %}
-
-    {% block description %}
-      {% if page.description %}
-        <meta name="description" content="{{ page.description }}" />
-        <meta name="twitter:description" content="{{ page.description }}">
-      {% else %}
-        <meta name="description" content="{{ config.description }}" />
-        <meta name="twitter:description" content="{{ config.description}}">
-      {% endif %}
-    {% endblock description %}
-
-    {% if page.title %}
-      <meta name="twitter:title" content="{{ page.title }}">
-    {% else %}
-      <meta name="twitter:title" content="{{ config.title }}">
-    {% endif %}
-
-    {% for link in config.extra.nav %}
-      <link rel="prerender" href="{{ link.path }}" />
-    {% endfor %}
-
-    <link rel="prefetch" href="{{ resize_image(path=config.extra.profile_small, width=50, height=50, op="fill") }}" />
-
-    <title>
-      {% block title %}
-        {% if page.title %}
-          {{ page.title }}
-        {% else %}
-          {{ config.title }}
-        {% endif %}
-      {% endblock title %}
-    </title>
-
-    {% block head %}{% endblock head %}
-    {% block styles %}
-      <link rel="stylesheet" href="{{ get_url(path="main.css") | safe }}">
-    {% endblock styles %}
-    {% block posthead %}{% endblock posthead %}
-  </head>
-  <body>
-    {% block header %}
-      <header>
-        <a class="profile-icon" href="/">
-          <img src="{{ resize_image(path=config.extra.profile_small, width=50, height=50, op="fill") }}" alt="profile picture">
+<body class="has-background-light">
+  {% block nav %}
+  <nav aria-label="main navigation" class="navbar is-light" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item has-text-weight-bold" href="/">{{ config.title }}</a>
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navMenu" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
-        <nav>
-          {% for link in config.extra.nav %}
-            <a href="{{ link.path }}">{{ link.name }}</a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end has-text-centered">
+          {% for item in config.extra.navbar_items %}
+          <a class="navbar-item" href='{{ item.url | replace(from='$BASE_URL', to=config.base_url) }}'>
+            {{ item.name }}
+          </a>
           {% endfor %}
-        </nav>
-      </header>
-    {% endblock header %}
-    <main>
-    {% block content %} {% endblock content %}
-    </main>
-  </body>
+          <a class="navbar-item" id="nav-search" title="Search" data-target="#search-modal">
+            <span class="icon">
+              <i class="fas fa-search"></i>
+            </span>
+          </a>
+          <a class="navbar-item" id="dark-mode" title="Switch to dark theme">
+            <span class="icon">
+              <i class="fas fa-adjust"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  {% endblock %}
+  <div class="modal" id="search-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="field">
+        <p class="control has-icons-right">
+          <input class="input" id="search" placeholder="Search this website." type="search" />
+          <span class="icon is-small is-right">
+            <i class="fas fa-search"></i>
+          </span>
+        </p>
+      </div>
+      <div class="search-results">
+        <div class="search-results__items"></div>
+      </div>
+    </div>
+    <button aria-label="close" class="modal-close is-large"></button>
+  </div>
+  {% block header %}{% endblock %}
+  {% block main %}{% endblock %}
+  {% block footer %}
+  <!--<footer class="py-2">
+    <p class="has-text-centered">
+      Built with
+      <span class="icon is-small">
+        <i class="fas fa-code fa-xs"></i>
+      </span>
+      code and
+      <span class="icon is-small">
+        <i class="fas fa-heart fa-xs"></i>
+      </span>
+      love <br /> Powered By
+      <span class="icon is-small">
+        <i class="fas fa-power-off fa-xs"></i>
+      </span>
+      Zola
+    </p>
+  </footer>-->
+  {% endblock %}
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+  <!-- CUSTOM
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/galleria.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.6.1/themes/twelve/galleria.twelve.min.js"></script>
+  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
+  <script src='{{ get_url(path='search_index.en.js') }}'></script>
+  <script src='{{ get_url(path='js/site.js') }}'></script>
+  {% block custom_js %}{% endblock %}
+</body>
+
 </html>

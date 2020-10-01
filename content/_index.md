@@ -1,13 +1,10 @@
 +++
-title = "Denis's blog"
+title = "Hi! Nice to meet you! 👋"
+description = "I'm a Software Engineer"
 +++
 
-## Hello, I'm Denis 👋
+<span class="home-icon">🚘‎</span>I work at [Uber](https://github.com/uber), dedicated to helping users [move safely](https://www.uber.com/br/en/ride/safety).</p>
 
-I helped build <a href="https://nubank.com.br/en/" target="_blank" title="Nubank">Nubank</a>, a fintech which now has millions of customers and is revolutionizing banking and financial products.
+<span class="home-icon">🏦</span>I helped build [Nubank](https://github.com/nubank), a fintech which now has millions of customers and is revolutionizing banking and financial products.
 
-I currently work at <a href="https://www.uber.com/" target="_blank" title="Uber">Uber</a>, dedicated to helping users <a
-                        href="https://www.uber.com/br/en/ride/safety/" title="Uber safety">move safely</a>.
-
-If you want to know more about my education and work experience, please check my <a
-                        href="https://www.linkedin.com/in/dnsisidoro" target="_blank" title="LinkedIn">LinkedIn</a> profile.
+<span class="home-icon">✨‎</span>I'm the author of [navi](https://github.com/denisidoro/navi), a popular open source project on GitHub, with 7k+ stars.

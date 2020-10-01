@@ -1,53 +1,39 @@
-{% extends "base.html" %}
-
-{% block styles%}
-  <link rel="stylesheet" href="{{ get_url(path="index.css") | safe }}">
-{% endblock styles %}
-
-{% block posthead %}
-  <link rel="prefetch" href="{{ resize_image(path=config.extra.profile_large, width=280, height=373, op="fill") }}">
-
-  {% if config.extra.latest_text %}
-    {% set blog_path = "blog" %}
-    {% if config.extra.blog_path %}
-      {% set_global blog_path = config.extra.blog_path %}
-    {% endif %}
-    {% set blogs = get_section(path=blog_path ~ "/_index.md") %}
-    {% set latest = blogs.pages.0 %}
-    {% if latest %}
-      <link rel="prerender" href="{{ latest.permalink }}" />
-    {% endif %}
-  {% endif %}
-{% endblock posthead %}
-
-
-{% block content %}
-  <div class="profile">
-    <div class="profile-container">
-      <img src="{{ resize_image(path=config.extra.profile_large, width=280, height=373, op="fill") }}" alt="profile picture">
-    </div>
-  </div>
-  <div class="content">
-    {{ section.content | safe }}
-
-    {% if config.extra.latest_text %}
-      {% set blog_path = "blog" %}
-      {% if config.extra.blog_path %}
-        {% set_global blog_path = config.extra.blog_path %}
-      {% endif %}
-      {% set blogs = get_section(path=blog_path ~ "/_index.md") %}
-      {% set latest = blogs.pages.0 %}
-      <div class="latest-container">
-        {% if latest %}
-        {{ config.extra.latest_text }} "<a href="{{ latest.permalink }}">{{ latest.title }}</a>"
-        {% endif %}
+{% extends 'base.html' %}
+{% block main %}
+  <main class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-10 is-offset-1">
+            {% if config.extra.author.avatar %}
+              <figure class="image center">
+                <img class="is-rounded card" src='{{ resize_image(path=config.extra.profile_large, width=180, height=180, op="fill") }}' style="max-width: 180px"/>
+              </figure>
+            {% endif %}
+            <div class="has-text-centered">
+              <h1 class="title">{{ section.title }}</h1>
+              <h2 class="subtitle">{{ section.description }}</h2>
+              {{ macros:: social_links( social_config=config.extra.social) }}
+            </div>
+            <div class="content has-text-justified mt-5">
+              {{ section.content | safe }}
+            </div>
+            {% set blog_path = "posts" %}
+            {% if config.extra.blog_path %}
+            {% set_global blog_path = config.extra.blog_path %}
+            {% endif %}
+            {% set blogs = get_section(path=blog_path ~ "/_index.md") %}
+            {% set latest = blogs.pages.0 %}
+            {% if latest %}
+            <div class="has-text-centered">
+              <div class="latest-post">
+                Check out my latest post: <a href="{{latest.permalink}}">{{latest.title}}</a>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
       </div>
-    {% endif %}
-
-    <nav class="lower">
-      {% for link in config.extra.nav %}
-        <a href="{{ link.path }}">{{ link.name }}</a>
-      {% endfor %}
-    </nav>
-  </div>
-{% endblock content %}
+    </div>
+  </main>
+{% endblock %}

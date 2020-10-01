@@ -1,49 +1,63 @@
-# The URL the site will be built for
-base_url = "https://denisidoro.github.io/"
-
-# Whether to automatically compile all Sass files in the sass directory
-compile_sass = true
-
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
-highlight_theme = "demain"
-
-# Whether to build a search index to be used later on by a JavaScript library
-build_search_index = false
-
+base_url = "https://denisidoro.github.io"
 title = "Denis's blog"
-description = "About me and blog posts"
-
+default_language = "en"
+highlight_code = true
+highlight_theme = "one-dark"
 generate_feed = true
-
+feed_filename = "rss.xml"
 taxonomies = [
-  { name = "tags" }
+	# { name = "categories", feed = true, paginate_by = 10 },
+	{ name = "tags", fees = true, paginate_by = 10 },
 ]
+languages = []
+compile_sass = true
+build_search_index = true
+ignored_content = []
+extra_syntaxes = []
+
+[link_checker]
+skip_prefixes = ["http://[2001:db8::]/"]
+skip_anchor_prefixes = ["https://caniuse.com/"]
+
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "on"
+
+[translations]
 
 [extra]
-
-nav = [
-  # { name = "About", path = "/" },
-  { name = "Tags", path = "/tags/" },
-  { name = "Blog", path = "/blog/" }
+navbar_items = [
+	{ url = "$BASE_URL/", name = "Home" },
+	{ url = "$BASE_URL/posts", name = "Posts" },
+	{ url = "$BASE_URL/tags", name = "Tags" },
+	# { url = "$BASE_URL/categories", name = "Categories" },
 ]
-
-latest_text = "Check out my latest post:"
 
 icon = "profile_square.jpg"
 profile_small = "profile_square.jpg"
 profile_large = "profile_vertical.jpg"
 
-accent = "#05a081"
-accent_light = "#82d0c0"
+# [extra.favicon]
+# favicon_16x16 = "/icons/favicon-16x16.png"
+# favicon_32x32 = "/icons/favicon-32x32.png"
+# apple_touch_icon = "/icons/apple-touch-icon.png"
+# safari_pinned_tab = "/icons/safari-pinned-tab.svg"
+# webmanifest = "/icons/site.webmanifest"
 
-author = "Denis Isidoro"
+[extra.author]
+name = "Denis Isidoro"
+avatar = "/images/avatar.png"
 
-footer_about = """
-_Note: opinions expressed here are solely my own and do not necessarily express the views or experiences of my employer or past employers._
-"""
+[extra.social]
+github = "denisidoro"
+linkedin = "dns.isidoro"
 
-not_found_message = """
-This is not the page you're looking for... return back to [safety?](/)
-"""
+[extra.analytics]
+google = "UA-168912661-1"
+
+# [extra.commenting]
+# hyvor = "1967"
+# 
+# [extra.mapbox]
+# access_token = "pk.eyJ1IjoicmF0YW5zaHJlc2h0aGEiLCJhIjoiY2tla2s2NmM3MDd0ZzJzbXFtc3Y2YmU0NyJ9.0RhUnJPKbxHWw3xGPnnBlA"
