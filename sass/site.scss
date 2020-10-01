@@ -13,31 +13,37 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-body[theme="dark"] {
-  filter: invert(1) hue-rotate(180deg);
+  /* display: none;
+  .fontawesome-i2svg-active & {
+    display: initial;
+  } */
 }
 
 main {
   flex: 1;
 }
 
+body[theme="dark"],
 img[theme="dark"],
 picture[theme="dark"],
-video[theme="dark"] {
+video[theme="dark"],
+body[theme="dark"] .emoji {
   filter: invert(1) hue-rotate(180deg);
 }
+
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .link {
   color: $link;
   &:hover {
     color: $link-hover;
   }
 }
+
 .read-more {
   color: $read-more;
   &:hover {
@@ -79,15 +85,13 @@ $breakpoint-mobile: 768px;
     margin: 2.5em;
 }
 
-.home-icon {
+.emoji.home-icon {
   width: 2em;
   display: inline-block;
 }
 
-body {
-  display: none;
-}
-
+/*
 .fontawesome-i2svg-active body {
   display: initial;
 }
+*/

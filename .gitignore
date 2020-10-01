@@ -2,6 +2,5 @@ junk/
 public/
 content/blog/img/
 content/posts/img/
-static/icons/
-static/images/
-static/processed_images/
+static/
+!static/js/
