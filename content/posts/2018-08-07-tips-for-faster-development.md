@@ -207,9 +207,9 @@ Using [**docopt**](http://docopt.org/) is a must-have, so that you don’t spend
 **Don’t throw away your scripts**, even if they are simple. Instead, put them in a folder, document them and make them available to your disposal whenever you need. I never remember the command for spawning a new Android emulator, for example, but I can always remember how to type `dot android emu start`. In particular, I divide all my scripts into non-nested folders and make them callable by a `dot` command.
 
 ```bash
-$ $ANDROID\_HOME/tools/emulator start     # is it like this?  
-$ $ANDROID\_SDK/tools/emulator -avd nexus # maybe like this?  
-\# checks StackOverflow, other references or simply...  
+$ $ANDROID_HOME/tools/emulator start     # is it like this?  
+$ $ANDROID_SDK/tools/emulator -avd nexus # maybe like this?  
+# checks StackOverflow, other references or simply...  
 $ dot android emu start                  # there you go!
 ```
 

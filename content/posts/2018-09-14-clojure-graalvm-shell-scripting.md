@@ -86,4 +86,4 @@ Example scripts and helpers for clj and GraalVM can be found [here](https://gith
 
 For other people’s experiences, click [here](https://www.innoq.com/en/blog/native-clojure-and-graalvm/) or [there](https://www.astrecipes.net/blog/2018/07/20/cmd-line-apps-with-clojure-and-graalvm/).
 
-{{ medium_first(id="https://miro.medium.com/max/700/1*gJm3BZcNrKoPOa2QO69p3Q.png" )}}
+{{ medium_first(id="using-clojure-graalvm-for-shell-scripting-da0bcc8955d4" )}}

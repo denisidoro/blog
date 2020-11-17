@@ -30,21 +30,21 @@ Given your resource constraints, maybe it makes sense to start as a single servi
 
 Here are my tips for designing a service easy to refactor, at a low cost during development.
 
-### 0\. Divide your application into layers
+### 0. Divide your application into layers
 
 You can choose from [onion](https://dzone.com/articles/onion-architecture-is-interesting), [layered](https://dzone.com/articles/layered-architecture-is-good), and [hexagonal](https://dzone.com/articles/hexagonal-architecture-is-powerful) architectures, among others. As always, prioritize immutability, state management, pure logic extraction and all the other best practices.
 
-### 1\. Don’t be afraid of using many namespaces
+### 1. Don’t be afraid of using many namespaces
 
 Don’t keep all namespaces (packages, files) centralized in a root one. Instead of `newFeature.logic.stockScraper`, use `stockScraper.logic`. Have you created a pure function that may be useful for both `stockScraper` and `stockStore`? Put it inside `stock.logic`. Have you written a function for linear interpolation? This math concept isn't restricted to a specific feature so it doesn't have to be inside `newFeature.logic.math`, for example. Put it inside `common.math`. This way you aren't tempted to put `linearInterpolate` and `stockSum` in the same file.
 
 When the time comes for service splitting, you can deploy the `common` and `stock` folders as libraries and start the `stockScraper` service by cut and pasting the respective folder. Much easier than traversing all the codebase later to extract everything you need!
 
-### 2\. Import non-common namespaces with care
+### 2. Import non-common namespaces with care
 
 Does `stockHistory` have to import `stockScraper` a lot? Can't it be minimized? Remember that when splitting this will translate into HTTP calls or message streaming. Try to at least isolate this dependency into a single namespace, which will be the precursor of the API between the two. This step is the most subjective, because it can quickly introduce overheads in the codebase for an MVP. You must consider the trade-offs.
 
-### 3\. Isolate implementation details into higher level components
+### 3. Isolate implementation details into higher level components
 
 Let’s now implement the handler for the endpoint that returns information about all the companies a customer has stocks from. One common approach is the following (we’re exposing components via dependency injection and middlewares):
 

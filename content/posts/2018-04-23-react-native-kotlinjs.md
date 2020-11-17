@@ -19,9 +19,9 @@ An example repository can be found [here](https://github.com/denisidoro/korn).
 ### React in a nutshell
 
 You can learn the basics of React Native very quickly reading the [official tutorial](https://facebook.github.io/react-native/docs/tutorial.html), but three important takeaways are:  
-\- view = f(state)   
-\- React has a virtual representation of the view, and it calculates the smallest diff between renders  
-\- development should be component-driven
+- view = f(state)   
+- React has a virtual representation of the view, and it calculates the smallest diff between renders  
+- development should be component-driven
 
 ### Hello world in Kotlin
 
@@ -62,9 +62,9 @@ Alternatively, if you want the extend the DSL so that you can call this componen
 React doesn’t dictate how state management should be. For the sake of this example, let’s write our own simplified, naive implementation of [Redux](https://redux.js.org).
 
 In this pattern, we have three main elements:  
-\- store: holds the state  
-\- actions: describe the changes  
-\- reducers: return an updated state based on the requested action
+- store: holds the state  
+- actions: describe the changes  
+- reducers: return an updated state based on the requested action
 
 Here is the full implementation:
 
