@@ -1,0 +1,285 @@
+main {
+  clear: both;
+
+  .content {
+    padding: 0 20px;
+    background: $background-color !important;
+    color: $text-color !important;
+  }
+
+  .posts {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  .read-more a {
+    color: $accent-color;
+    font-family: $decoration-font-family;
+    font-size: 1.1rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .about,
+  .post {
+    padding: 1.5rem 0;
+
+    .post__title {
+      font-family: $decoration-font-family;
+
+      a {
+        color: $accent2-color;
+      }
+    }
+
+    h2, h3, h4, h5, h6 {
+      font-weight: 400;
+    }
+
+    code {
+      padding: 3px 5px;
+      border-radius: 4px;
+      color: $code-color;
+      background: $background2-color;
+    }
+
+    p > a {
+      color: $accent-color;
+
+      &:hover {
+        border-bottom: 1px solid $accent-color;
+      }
+    }
+
+    blockquote {
+      margin: 2em 0;
+      padding: 10px 20px;
+      position: relative;
+      color: rgba($accent2-color, 0.8);
+      background-color: rgba(192, 91, 77, .05);
+      border-left: 3px solid rgba(192, 91, 77, .3);
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+
+      p {
+        margin: 0;
+      }
+    }
+
+    table {
+      width: 100%;
+      max-width: 100%;
+      margin: 10px 0;
+      border-spacing: 0;
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, .125);
+
+      thead {
+        background: $background2-color;
+      }
+
+      th, td {
+        padding: 5px 15px;
+        border: 1px double darken($background2-color, 3%);
+      }
+
+      tr:hover {
+        background-color: $background2-color;
+      }
+    }
+
+    .footnote-definition {
+      padding-left: 40px;
+
+      &:first-of-type {
+        border-top: 2px dashed $accent-color;
+        margin-top: 1rem;
+        padding-top: 1rem;
+      }
+
+      sup {
+        &.footnote-definition-label {
+          font-size: 100%;
+          position: unset;
+          top: unset;
+
+          &::after {
+            content: '.';
+          }
+        }
+      }
+
+      p {
+        display: inline;
+      }
+    }
+
+    &__title {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 400;
+
+      @include underline-from-center;
+    }
+
+    &__category {
+      display: inline;
+
+      a {
+        color: inherit;
+
+        &:before {
+          content: "\B7";
+          padding-right: 2px;
+        }
+
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+
+    &__meta {
+      font-size: 14px;
+      color: #8a8a8a;
+    }
+
+    &__summary {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .post-footer {
+    margin-top: 20px;
+    border-top: 1px solid #e6e6e6;
+
+    &:after {
+        clear: both;
+        height: 0;
+        width: 100%;
+        content: '';
+        display: block;
+    }
+  }
+
+  .post-tags {
+    padding: 15px 0;
+
+    a {
+      margin-right: 5px;
+      color: $accent-color;
+      word-break: break-all;
+    }
+  }
+
+  .post-nav {
+    margin: 1rem 0;
+  }
+
+  .post + .post {
+    border-top: 1px solid #e6e6e6;
+  }
+
+  .pagination {
+    clear: both;
+    font-family: $decoration-font-family;
+    margin: 2rem 0;
+
+    a {
+      color: $accent2-color;
+    }
+  }
+}
+
+.next, .previous {
+  font-weight: 600;
+  font-size: 20px;
+  transition: transform 0.3s ease-out;
+
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+.next {
+  float: right;
+  &:hover {
+    transform: translateX(4px);
+  }
+}
+
+.previous {
+  float: left;
+  &:hover {
+    transform: translateX(-4px);
+  }
+}
+
+.taxonomies {
+  margin: 2em 0 3em;
+  text-align: center;
+
+  &__title {
+    display: inline-block;
+    font-size: 18px;
+    color: $accent-color;
+    border-bottom: 2px solid $accent-color;
+  }
+
+  &__items {
+    margin: 10px 0;
+
+    a {
+      margin: 5px 10px;
+      word-wrap: break-word;
+      position: relative;
+
+      &:hover {
+        color: $accent-color;
+      }
+
+      .count {
+        position: relative;
+        top: -8px;
+        right: -2px;
+        color: $accent-color;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.taxonomy {
+  margin: 2em 0;
+
+  &__item {
+    padding: 3px 20px;
+    border-left: 1px solid #cacaca;
+    transition: 0.2s ease-out;
+
+    &:hover {
+      border-left: 3px solid $accent-color;
+      transform: translateX(4px);
+    }
+
+    &__time {
+      margin-right: 10px;
+      color: #8a8a8a;
+    }
+
+    &__title a {
+      color: $accent-color;
+    }
+  }
+}
+
+.about {
+  p > a {
+    color: $accent-color;
+    word-break: break-all;
+
+    &:hover {
+      border-bottom: 1px solid $accent-color;
+    }
+  }
+}

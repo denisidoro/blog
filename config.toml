@@ -1,63 +1,24 @@
-base_url = "https://denisidoro.github.io"
-title = "Denis Isidoro"
-default_language = "en"
-highlight_code = true
-highlight_theme = "one-dark"
-generate_feed = true
-feed_filename = "rss.xml"
-taxonomies = [
-	# { name = "categories", feed = true, paginate_by = 10 },
-	{ name = "tags", fees = true, paginate_by = 10 },
-]
-languages = []
+# The URL the site will be built for
+base_url = "https://zola-even.netlify.com"
+
 compile_sass = true
-build_search_index = true
-ignored_content = []
-extra_syntaxes = []
+title = "even theme"
+description = ""
+highlight_code = true
+generate_feed = true
 
-[link_checker]
-skip_prefixes = ["http://[2001:db8::]/"]
-skip_anchor_prefixes = ["https://caniuse.com/"]
-
-[slugify]
-paths = "on"
-taxonomies = "on"
-anchors = "on"
-
-[translations]
+taxonomies = [
+    {name = "categories", rss = true},
+    {name = "tags", rss = true},
+]
 
 [extra]
-navbar_items = [
-	{ url = "$BASE_URL/", name = "Home" },
-	{ url = "$BASE_URL/posts", name = "Posts" },
-	{ url = "$BASE_URL/tags", name = "Tags" },
-	# { url = "$BASE_URL/categories", name = "Categories" },
+author = "Vincent"
+even_menu = [
+    {url = "$BASE_URL", name = "Home"},
+    {url = "$BASE_URL/categories", name = "Categories"},
+    {url = "$BASE_URL/tags", name = "Tags"},
+    {url = "$BASE_URL/about", name = "About"},
 ]
 
-icon = "profile_square.jpg"
-profile_small = "profile_square.jpg"
-profile_large = "profile_vertical.jpg"
-
-# [extra.favicon]
-# favicon_16x16 = "/icons/favicon-16x16.png"
-# favicon_32x32 = "/icons/favicon-32x32.png"
-# apple_touch_icon = "/icons/apple-touch-icon.png"
-# safari_pinned_tab = "/icons/safari-pinned-tab.svg"
-# webmanifest = "/icons/site.webmanifest"
-
-[extra.author]
-name = "Denis Isidoro"
-avatar = "/images/avatar.png"
-
-[extra.social]
-github = "denisidoro"
-linkedin = "dns.isidoro"
-
-[extra.analytics]
-google = "UA-168912661-1"
-
-# [extra.commenting]
-# hyvor = "1967"
-# 
-# [extra.mapbox]
-# access_token = "pk.eyJ1IjoicmF0YW5zaHJlc2h0aGEiLCJhIjoiY2tla2s2NmM3MDd0ZzJzbXFtc3Y2YmU0NyJ9.0RhUnJPKbxHWw3xGPnnBlA"
+even_title = "Even"

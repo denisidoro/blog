@@ -1,97 +1,44 @@
-@import "https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap";
+@import "normalize";
 
-$font-stack: "Nunito", sans-serif;
+$theme-color-map: (
+  'Default': #c05b4d #f8f5ec,
+  'Mint Green': #16982B #f5f5f5,
+  'Cobalt Blue': #0047AB #f0f2f5,
+  'Hot Pink': #FF69B4 #f8f5f5,
+  'Dark Violet': #9932CC #f5f4fa
+);
 
-$link: hsl(0, 0%, 21%);
-$link-hover: hsl(204, 71%, 39%);
+// TODO: allow to change that
+$text-color: white;
+$accent-color: orange;
+$background2-color: purple;
+$accent2-color: pink;
+$background-color: #2e2e2e;
+$body-width: 800px;
+$mobile-navbar-height: 50px !default;
+$code-color: #c7254e;
+$code-font-family: Consolas, Monaco, Menlo, Consolas, monospace !default;
+$decoration-font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+$navbar-color: purple;
+$toc-color: hsla(45,20%,30%,.6);
 
-$read-more: hsl(204, 71%, 39%);
-$read-more-hover: hsl(348, 100%, 61%);
-
-body {
-  font: 120% $font-stack;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  /* display: none;
-  .fontawesome-i2svg-active & {
-    display: initial;
-  } */
+@mixin min-screen($min-width: $body-width) {
+   @media screen and (min-width: $min-width) {
+     @content;
+   }
 }
 
-main {
-  flex: 1;
+@mixin max-screen($max-width: $body-width) {
+   @media screen and (max-width: $max-width) {
+     @content;
+   }
 }
 
-body[theme="dark"],
-img[theme="dark"],
-picture[theme="dark"],
-video[theme="dark"],
-body[theme="dark"] .emoji {
-  filter: invert(1) hue-rotate(180deg);
-}
+@import "animations";
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.link {
-  color: $link;
-  &:hover {
-    color: $link-hover;
-  }
-}
-
-.read-more {
-  color: $read-more;
-  &:hover {
-    color: $read-more-hover;
-  }
-}
-
-$breakpoint-mobile: 768px;
-@media (max-width: $breakpoint-mobile) {
-  body {
-    font: 100% $font-stack;
-  }
-}
-
-.youtube {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
-    overflow: hidden;
-
-    iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-}
-
-.disclaimer, .medium-first {
-  font-style: italic;
-}
-
-.hero .title {
-  margin: 1em;
-}
-
-.latest-post {
-    margin: 2.5em;
-}
-
-.emoji.home-icon {
-  width: 2em;
-  display: inline-block;
-}
-
-/*
-.fontawesome-i2svg-active body {
-  display: initial;
-}
-*/
+@import "base";
+@import "header";
+@import "main";
+@import "mobile";
+@import "slideout";
+@import "toc";
