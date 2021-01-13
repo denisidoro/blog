@@ -9,7 +9,7 @@ summary = "Terminal commands can get quite convoluted. How can we make CLI calls
 
 ### Inspiration
 
-I've been using [yab](https://github.com/yarpc/yab) -- a curl-like CLI -- recently and I was surprised how elegantly it solves a common problem.
+I've been using [yab](https://github.com/yarpc/yab) --a curl-like CLI-- recently and I was surprised by how elegantly it solves a common problem.
 
 yab calls can get quite verbose. As an example, to get a `Customer` by its `id` from a `customer` microservice:
 ```sh
@@ -49,7 +49,7 @@ I think this is pretty cool!
 
 It can save us lots of time. It also helps sharing knowledge between team members: we could have a git repo with a bunch of these `.yaml` files and a simple `git pull` would allow everyone to be on the same page.
 
-My immediate thought "could we easily replicate this for other commands?"
+My immediate thought was "could we easily replicate this for other commands?"
 
 # Solution
 
