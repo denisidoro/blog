@@ -6,12 +6,12 @@ tags = [ "dev", "terminal" ]
 summary = "Terminal commands can get quite convoluted. How can we make CLI calls easy to use?"
 +++
 
-
 ### Inspiration
 
-I've been using [yab](https://github.com/yarpc/yab) --a curl-like CLI-- recently and I was surprised by how elegantly it solves a common problem.
+I've been using [yab](https://github.com/yarpc/yab) —a curl-like CLI— recently and I was surprised by how elegantly it solves a common problem.
 
 yab calls can get quite verbose. As an example, to get a `Customer` by its `id` from a `customer` microservice:
+
 ```sh
 yab customer Customer::get \
     -t /path/to/idl/some.company/customer/customer.thrift \
@@ -35,6 +35,7 @@ request:
 The file takes a set of CLI flags in their long form, e.g. `--thrift` instead of `-t`, and their associated values.
 
 Then, the following call is equivalent to the beforementioned one:
+
 ```sh
 yab -y customer_by_id.yaml
 ```
@@ -60,23 +61,23 @@ The final call should look like this:
 http -v POST https://jsonplaceholder.typicode.com/posts title=foo body=bar userId=11
 ```
 
-The tool I'm going to use is [navi](https://github.com/denisidoro/navi). It allows you to browse through cheatsheets --that you may write yourself or download from maintainers-- and execute commands. 
+The tool I'm going to use is [navi](https://github.com/denisidoro/navi). It allows you to browse through cheatsheets —that you may write yourself or download from maintainers— and execute commands. 
 
-navi encourages you to write `.cheat` files which break commands down into smaller, reusable pieces, like so:
+navi encourages you to write `.cheat` files which break commands down into smaller, reusable pieces:
 ```sh
 % httpie
 
 # make a request to a typicode microservice
 http -v <method> "https://<service>.typicode.com/<endpoint>" <http-body>
 
-$ method: echo 'GET;POST;PUT' | tr ';' '\n'
-$ service: echo 'jsonplaceholder;anotherservice' | tr ';' '\n'
-$ endpoint: case "${service}:${method}" in; "jsonplaceholder-post") echo 'e1;e2;e3' | tr ';' '\n';; esac
+$ method: echo -e 'GET\nPOST\nPUT'
+$ service: echo -e 'jsonplaceholder\nanotherservice'
+$ endpoint: case "${service}:${method}" in; "jsonplaceholder:post") echo -e 'e1\ne2\ne3';; esac
 ```
 
 The `endpoint` values here are incomplete for briefness and, in a real-world scenario, would probably be fetched dynamically, instead of being harcoded.
 
-This offers a way to very quickly make a request to any endpoint in our company, given that we somehow mapped all possible values to the corresponding values. 
+This `.cheat` enables us to very quickly make a request to any endpoint in our company, given that we somehow mapped all possible values to the corresponding variables. 
 
 But an engineer who recently joined the team still wouldn't know what service/endpoint to request for creating a new `post`. We could then add another cheatsheet entry for more granular commands:
 
@@ -106,11 +107,11 @@ If no interaction is wanted we could override values using environment variables
 userId=12 navi --query 'http endpoints create post' --best-match
 ```
 
-Let's say that we want to skip the `--query` and `--best-match` boilerplate and we know that we're always gonna use this tool for `http endpoints`. A simple bash script could come to the rescue:
+Let's say that we want to skip the `--query` and `--best-match` boilerplate and we know that we're always gonna use this tool for `http endpoints`. A simple bash script  come to the rescue:
 
 ```sh
 export_var() {
-   local -r var="$(echo "$1" | tr '-' '_')"
+   local -r var="${1//-/_}"
    export "$var"="$2"
 }
 
@@ -127,8 +128,8 @@ endpoint() {
 }
 ```
 
-And we could call it like:
-```
+And we could call it as follows:
+```sh
 endpoint 'create post'
 endpoint 'create post' --userId 12
 ```
@@ -137,6 +138,6 @@ endpoint 'create post' --userId 12
 
 I hope that, with these tips, using the terminal becomes easier for you. 
 
-Creating templates may speed up day-to-day tasks and improve knowledge sharing --either with other team members or with your future self.
+Creating templates may speed up day-to-day tasks and improve knowledge sharing —either with other team members or with your future self.
 
 By the way, if you have any feature requests for navi, feel free to leave an issue [here](https://github.com/denisidoro/navi/issues)!
