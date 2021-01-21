@@ -1,7 +1,27 @@
 {% extends 'base.html' %}
 {% block title %}
-  {{ config.title }} | {{ page.title }}
+  {{ page.title }}
 {% endblock title %}
+
+{% block header %}
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="example.com" />
+{%if section.title%}
+<meta name="og:title" content="{{ section.title }}" />
+{%endif%}
+{%if page.title%}
+<meta name="og:title" content="{{ page.title }}" />
+{%endif%}
+{%if section.description%}
+<meta name="description" content="{{ section.description }}" />
+<meta name="og:description" content="{{ section.description }}" />
+{%endif%}
+{%if page.description%}
+<meta name="description" content="{{ page.description }}" />
+<meta name="og:description" content="{{ page.description }}" />
+{%endif%}
+{% endblock %}
+
 {% block main %}
   <main class="section">
     <div class="container">
@@ -66,6 +86,16 @@
             
             <div class="container has-text-centered mt-6">
               {{ macros::page_share_links(page=page) }}
+            </div>
+
+            <div class="comment-section">
+              <script src="https://utteranc.es/client.js"
+                repo="denisidoro/blog"
+                issue-term="og:title"
+                label="comment"
+                crossorigin="anonymous"
+                async>
+              </script>
             </div>
           </article>
           <hr/>
