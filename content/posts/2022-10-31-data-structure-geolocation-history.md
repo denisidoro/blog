@@ -23,7 +23,7 @@ The problem is that the exported JSON weighs ~1GB. My computer has 16GB of RAM s
 ### JSON parsing  
   
 For reference, here's what the JSON looks like:  
-```bashon
+```json
 {
   "locations": [{
     "latitudeE7": 435631892,
@@ -58,7 +58,7 @@ Instead of using a JSON deserializer per se, I decided to iterate over each line
   
 A naive structure for our purposes is a sequence of `DataPoint`s, where `DataPoint` has `datetime`, `latitude` and `longitude`:  
   
-```bashon 
+```json 
 [
  (DateTime(2022,10,22,10,45,32), 27.5226335, 43.552225),  
  (DateTime(2022,10,22,10,46,21), 27.5226382, 43.552237),  
