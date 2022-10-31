@@ -23,7 +23,7 @@ The problem is that the exported JSON weighs ~1GB. My computer has 16GB of RAM s
 ### JSON parsing  
   
 For reference, here's what the JSON looks like:  
-```json
+```bashon
 {
   "locations": [{
     "latitudeE7": 435631892,
@@ -58,7 +58,7 @@ Instead of using a JSON deserializer per se, I decided to iterate over each line
   
 A naive structure for our purposes is a sequence of `DataPoint`s, where `DataPoint` has `datetime`, `latitude` and `longitude`:  
   
-```json 
+```bashon 
 [
  (DateTime(2022,10,22,10,45,32), 27.5226335, 43.552225),  
  (DateTime(2022,10,22,10,46,21), 27.5226382, 43.552237),  
@@ -189,7 +189,7 @@ I'll skip the implementation details but you can check the full code [here](http
 After finishing everything, we can measure how many megabytes our data structure needs.  
   
 Let's insert data for the last couple of years into it and measure memory consumption:  
-```  
+```bash 
 input points: 345 k
 high-precision data points: 42 k
 low-precision data points: 280 k
@@ -215,7 +215,7 @@ Fortunately, Rust offers a [Vec::shrink_to_fit()](https://doc.rust-lang.org/std/
 ### Benchmarking  
   
 Finally, here are our results:  
-```  
+```bash
 input points: 345 k
 high-precision data points: 42 k
 low-precision data points: 280 k
@@ -225,7 +225,7 @@ sum size: 2838 KB
 ```  
   
 Let's compare this to a naive `Vec<Timestamp, f64, f64>` implementation:  
-```  
+```bash
 input_points * (size_of_timestamp + 64 + 64) * average vec overhead
 354k * (64+64+64) * 1.5 bits
 121 MB
@@ -234,7 +234,7 @@ input_points * (size_of_timestamp + 64 + 64) * average vec overhead
 Overall we saved around ~95% in memory!  
 
 After fiddling with some thresholds, I noticed that, to achieve a 5m precision instead of 15m, the memory overhead is negligible:
-```
+```bash
 input points: 345 k
 high-precision data points: 46 k
 low-precision data points: 273 k
