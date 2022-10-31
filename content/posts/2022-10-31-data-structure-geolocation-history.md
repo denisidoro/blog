@@ -82,7 +82,7 @@ There are some assumptions we can make to help us design a better data structure
 First let's try to understand how much each decimal place contributes to precision.  
   
 A quick search on Google gives us [the following](https://gis.stackexchange.com/questions/8650/measuring-accuracy-of-latitude-and-longitude):  
-```  
+```bash 
 - The first decimal place  is worth up to 11.1 km: it can distinguish the position of one large city from a neighboring large city.
 - The second decimal place is worth up to 1.1 km: it can separate one village from the next.
 - The third decimal place is worth up to 110 m: it can identify a large agricultural field or institutional campus.
