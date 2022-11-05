@@ -6,6 +6,8 @@ tags = [ "dev", "rust", "geo" ]
 summary = "Do we really need to store all absolute data points?"
 +++
 
+_Note: please check [this other post](@/posts/2022-11-05-data-structure-geolocation-history-rev2.md) instead, which is a more recent revision on this topic._
+
 In this blog post I'll cover how I built a memory-efficient data structure for storing location history data.  
   
 Some Rust details will also be explained.  
