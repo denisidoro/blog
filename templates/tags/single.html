@@ -1,70 +1,71 @@
-{% extends "base.html" %}
-
-{% block header %}
-<header class="hero">
-	<div class="hero-body">
-		<div class="container">
-			<h1 class="title has-text-centered">
-				<span class="icon"><i class="fas fa-tag"></i></span> {{ term.name }}
-			</h1>
-		</div>
-	</div>
+{% extends "index.html" %} {% import "macros.html" as macros %} {% block header
+%}
+<header id="site-header" class="animated slideInUp faster">
+  <div class="hdr-wrapper section-inner">
+    <div class="hdr-left">
+      <div class="site-branding">
+        <a href="{{ config.base_url}}">{{ config.title }}</a>
+      </div>
+      <nav class="site-nav hide-in-mobile">
+        {% for menu_item in config.extra.hermit_menu %}
+        <a href="{{ menu_item.link }}">{{ menu_item.name }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+    <div class="hdr-right hdr-icons">
+      <span class="hdr-social hide-in-mobile">
+        {{ macros::render_social_icons() }}
+      </span>
+      <button id="menu-btn" class="hdr-btn" title="Menu">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-menu"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
 </header>
-{% endblock %}
+<div id="mobile-menu" class="animated fast">
+  <ul>
+    {% for menu_item in config.extra.hermit_menu %}
+    <li><a href="{{ menu_item.link }}">{{ menu_item.name }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock header %} {% block title %} {% endblock title %} {% block main %}
 
-{% block main %}
-<main class="section pt-0">
-	<div class="container">
-		<div class="columns">
-			<div class="column  is-6 is-offset-3">
-				{% if paginator %}
-				{% set pages = paginator.pages %}
-				{% else %}
-				{% set pages = term.pages %}
-				{% endif %}
-				{% for page in pages %}
-				<article>
-					<h1 class="title is-4">
-						<a class="link" href="{{ page.permalink }}">
-							{{ page.title }}
-						</a>
-					</h1>
-
-					<p>{{ macros::page_publish_metadata(page=page) }}</p>
-
-					{% if page.extra.summary %}
-						{{ page.extra.summary | safe }}
-					{% else %}
-						{{ page.summary | safe }}
-					{% endif %}
-
-					<a class="read-more" href="{{ page.permalink }}">
-						Read More <span class="icon is-small"><i class="fas fa-arrow-right fa-xs"></i></span>
-					</a>
-				</article>
-				{% if not loop.last %}
-				<hr />{% endif %}
-				{% endfor %}
-			</div>
-		</div>
-		{% if paginator.previous or paginator.next %}
-		<nav class="level">
-			{% if paginator.previous %}
-			<div class="level-item has-text-centered">
-				<a href="{{ paginator.previous }}" class="button is-black is-outlined">
-					<span class="icon mr-2"><i class="fas fa-arrow-circle-left"></i></span> Previous Page
-				</a>
-			</div>
-			{% endif %}
-			{% if paginator.next %}
-			<div class="level-item has-text-centered">
-				<a href="{{ paginator.next }}" class="button is-black is-outlined">
-					Next Page <span class="icon ml-2"><i class="fas fa-arrow-circle-right"></i></span>
-				</a>
-			</div>
-			{% endif %}
-		</nav>
-		{% endif %}
-	</div>
+<main class="site-main section-inner thin animated fadeIn faster">
+  <h1>{{ term.name }}</h1>
+  {% for year, pages in term.pages | group_by(attribute="year") %}
+  <div class="posts-group">
+    <div class="post-year">{{ year }}</div>
+    <ul class="posts-list">
+      {% for page in pages %}
+      <li class="post-item">
+        <a href="{{ page.permalink }}">
+          <span class="post-title">{{ page.title }}</span>
+          <span class="post-day"
+            >{{ page.date | date(format="%b %d") }}</span
+          >
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
 </main>
-{% endblock main %}
+
+{% endblock main %} {% block footer %} {{ macros::footer() }} {% endblock footer
+%}

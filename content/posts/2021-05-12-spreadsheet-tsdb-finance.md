@@ -3,7 +3,7 @@ title = "Using a spreadsheet as a timeseries database for finance"
 [taxonomies]
 tags = [ "sheets", "grafana", "finance", "js" ]
 [extra]
-summary = "Kotlin is an awesome language. React Native is becoming more and more popular. Why not mixing both?"
+summary = "How much can we stretch Google Sheets?"
 +++
 
 ### Context
