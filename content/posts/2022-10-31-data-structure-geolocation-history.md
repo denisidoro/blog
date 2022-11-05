@@ -16,7 +16,7 @@ My DSLR camera has no GPS built-in. Evidently, photos from it don't include geol
   
 If only my location history were stored somewhere, so that I could update photos with the correct data...  
   
-Unsurprisingly, Google knows where I am, where I've been and where I'm going to be. They even allow me to export this data.  
+Unsurprisingly, Google knows where I am, where I've been ~~and where I'm going to be~~. They even allow me to export this data.  
   
 The problem is that the exported JSON weighs ~1GB. My computer has 16GB of RAM so it can all fit in memory, but we certainly can store it more efficiently.  
   
@@ -228,10 +228,10 @@ Let's compare this to a naive `Vec<Timestamp, f64, f64>` implementation:
 ```bash
 input_points * (size_of_timestamp + 64 + 64) * average vec overhead
 354k * (64+64+64) * 1.5 bits
-121 MB
+11.8 MB
 ```
   
-Overall we saved around ~95% in memory!  
+Overall we saved around ~80% in memory!  
 
 After fiddling with some thresholds, I noticed that, to achieve a 5m precision instead of 15m, the memory overhead is negligible:
 ```bash
