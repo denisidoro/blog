@@ -350,7 +350,9 @@ total size: 485 KB
 
 So I decided to set the max error to 5m instead.
 
-Overall we saved 95%+ in memory, compared to the most straightforward solution!
+Overall we reduced memory footprint by 24x, compared to the most straightforward solution (using a stream for JSON deserialization).
+
+Had we used a `String` for storing the whole JSON first, the maximum RAM used would be 1900x bigger!
 
 The final code can be found [here](https://github.com/denisidoro/blog/tree/master/gists/geolocation-history).
 
