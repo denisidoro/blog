@@ -22,10 +22,10 @@ He also has a playlist of videos for more junior engineers.
 
 <figure>
     {{ youtube(id="fUpYLwzGtW0", class="youtube") }}
-    <figcaption>In this video, he quickly talks about how timeseries database are designed</figcaption>
+    <figcaption>In this video, he quickly talks about how timeseries databases are designed</figcaption>
 </figure>
 
-If a picture is worth a thousand words, than [ByByteGo](https://www.youtube.com/@ByteByteGo)'s short animations are worth a million.
+If a picture is worth a thousand words, then [ByByteGo](https://www.youtube.com/@ByteByteGo)'s short animations are worth a million.
 
 <figure>
     {{ youtube(id="V3pzxngeLqw", class="youtube") }}
