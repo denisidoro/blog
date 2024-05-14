@@ -8,9 +8,9 @@ summary = "These YouTubers made the difference for me!"
 
 ## Intro
 
-I've recently landed an offer I was really looking forward (yay! 🎉)
+I've recently landed an offer I was really looking forward to (yay! 🎉)
 
-The least I could do was to give some shoutouts to the YouTubers which made this possible.
+The least I could do was to give a shoutout to the YouTubers who made this possible.
 
 ## System design
 
