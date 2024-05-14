@@ -8,11 +8,11 @@ summary = "These YouTubers made the difference for me!"
 
 ## Intro
 
-I've recently landed an offer I was really looking forward to (yay! 🎉)
+I've recently landed an offer I was really looking forward to (yay! 🎉).
 
 The least I could do was to give a shoutout to the YouTubers who made this possible.
 
-## System design
+## System Design
 
 [Jordan](https://www.youtube.com/@jordanhasnolife5163/featured) is the GOAT! Seriously.
 
@@ -32,7 +32,7 @@ If a picture is worth a thousand words, then [ByByteGo](https://www.youtube.com/
     <figcaption>No need to read an article about bloom filters. This 5min-video is all you need to know</figcaption>
 </figure>
 
-If you speedrun his videos at 2x speed, you can watch all his videos in a day or two.
+If you watch his videos at 2x speed, you can speedrun his channel in a day or two.
 
 In some big tech companies, the system design round isn't about drawing boxes -- it's about writing a doc. With that in mind, [Irtiza](https://www.youtube.com/@irtizahafiz)'s videos helped me shift my mental model for these interviews. In each video, he ends up with a Markdown file with all his discussions, basically.
 
@@ -58,7 +58,7 @@ I've only ever watched one video from [Jeff Su](https://www.youtube.com/@JeffSu)
 
 In this video, he covers an alternative to the famous STAR method. He describes why the CARL method is better, and after testing it out, I can confirm he was right.
 
-Finally, [Jeff Sipe](https://www.youtube.com/@jeffhsipepi/videos)'s videos also were key for me to understand the importance of the subjective/subconcious parts of this round.
+Finally, [Jeff Sipe](https://www.youtube.com/@jeffhsipepi/videos)'s videos also were key for me to understand the importance of the subjective/subconscious parts of this round.
 
 <figure>
     {{ youtube(id="TWFs3dxfiOc", class="youtube") }}
